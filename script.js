@@ -21,7 +21,7 @@ function addItem(item) {
 }
 
 function removeLastItem() {
-    const removed = shoppingList.pop();
+  const removed = shoppingList.pop();
   // console.log("Removed", removed);
   // console.log("Current list:", shoppingList);
 }
@@ -33,10 +33,44 @@ function displayList() {
 // Task .2 Filter and Search Array //
 // /////////////////////////////////
 
-
 function filterItems(searchTerm) {
   const term = searchTerm.toLowerCase();
   return shoppingList.filter(function (item) {
     return item.toLowerCase().includes(term);
   });
 }
+
+// ///////////////////////////////////
+// Task 3. Rendering Browsers List  //
+// ///////////////////////////////////
+
+const itemInput = document.getElementById("itemInput");
+const addBtn = document.getElementById("addBtn");
+const removeBtn = document.getElementById("removeBtn");
+const listDisplay = document.getElementById("ShoppingList");
+
+function renderList() {
+  listDisplay.innerHTML = "";
+
+  for (let i = 0; i < shoppingList.length; i++) {
+    const li = document.createElement("li");
+    li.textContent = shoppingList[i];
+    listDisplay.appendChild(li);
+  }
+  console.log("Rendered UL with;", shoppingList);
+}
+
+addBtn.addEventListener("click", function () {
+  const typedValue = itemInput.value.trim();
+
+  if (typedValue) {
+    addItem(typedValue);
+    itemInput.value = "";
+    renderList();
+  }
+});
+
+removeBtn.addEventListener("click", function() {
+    removeLastItem ();
+    renderList();
+});
