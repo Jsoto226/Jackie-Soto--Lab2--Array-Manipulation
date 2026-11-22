@@ -47,7 +47,7 @@ function filterItems(searchTerm) {
 const itemInput = document.getElementById("itemInput");
 const addBtn = document.getElementById("addBtn");
 const removeBtn = document.getElementById("removeBtn");
-const listDisplay = document.getElementById("ShoppingList");
+const listDisplay = document.getElementById("shoppingList");
 
 function renderList() {
   listDisplay.innerHTML = "";
